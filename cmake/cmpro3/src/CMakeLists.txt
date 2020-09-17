@@ -1,0 +1,8 @@
+ADD_EXECUTABLE(main main.c)
+INCLUDE_DIRECTORIES(/tmp/include/hello)
+LINK_DIRECTORIES(/tmp/lib)
+FIND_LIBRARY(myLib NAMES libhello.so PATHS /tmp/lib)
+IF(myLib)
+LINK_DIRECTORIES(${myLib})
+ENDIF(myLib)
+TARGET_LINK_LIBRARIES(main libhello.so)
